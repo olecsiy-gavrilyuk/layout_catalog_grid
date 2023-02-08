@@ -12,21 +12,12 @@
     height: 300px;
     border: 1px solid $color-border;
     border-radius: 5px;
-    margin-bottom: 48px;
   }
 
-  &__card:not(:nth-child(4n)) {
-    margin-right: 48px;
-  }
-  @media (min-width: 480px) {
-    grid-template-columns: repeat(2, $card-width);
-  }
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(3, $card-width);
+  @each $size, $columns in $sizes {
+    @media (min-width: $size) {
+      grid-template-columns: repeat($columns, $card-width);
+    }
   }
 
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(4, $card-width);
-  }
 }
